@@ -1,0 +1,37 @@
+name: alertapp_admin
+description: A new Flutter project.
+
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=2.19.2 <3.0.0"
+
+dependencies:
+  firebase_core: ^2.0.0
+  firebase_messaging: ^14.4.1
+  flutter_local_notifications: ^13.0.0
+  cloud_firestore: ^4.0.1
+  flutter:
+    sdk: flutter
+
+  flutter_native_splash: ^2.2.18
+  flutter_map: ^0.14.0
+  geolocator: ^9.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter_native_splash:
+  color: "#ED1212"
+  image: "assets/images/logo_nombre.jpg"
+  web: false
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
