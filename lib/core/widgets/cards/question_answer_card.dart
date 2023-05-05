@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:alertapp_admin/core/styles/color_theme.dart';
+
+import '../../styles/color_theme.dart';
 
 class QuestionAnswerCard extends StatefulWidget {
   final String question;

@@ -1,11 +1,12 @@
-import 'package:alertapp_admin/core/styles/color_theme.dart';
-import 'package:alertapp_admin/presentation/about_alertapp/about_alertapp_view.dart';
-import 'package:alertapp_admin/presentation/map/map_view.dart';
-import 'package:alertapp_admin/presentation/notifications/notifications_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+import '../../core/styles/color_theme.dart';
+import '../about_alertapp/about_alertapp_view.dart';
+import '../map/map_view.dart';
+import '../notifications/notifications_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

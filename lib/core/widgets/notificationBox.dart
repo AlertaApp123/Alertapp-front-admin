@@ -1,23 +1,32 @@
-import 'package:alertapp_admin/core/styles/color_theme.dart';
+import 'package:alertapp/core/styles/color_theme.dart';
+import 'package:alertapp/presentation/map/map_view.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
+
+import '../../data/data_source/data_source.dart';
 
 class NotficationBox extends StatelessWidget {
   final String ciudad;
+  final String nombre;
   final double latitud;
   final double longitud;
-  final DateTime fecha;
+  final String fecha;
+  final String id;
 
   const NotficationBox(
       {super.key,
+      required this.nombre,
       required this.ciudad,
       required this.latitud,
       required this.longitud,
-      required this.fecha});
+      required this.fecha,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 320,
+      margin: EdgeInsets.only(top: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -41,16 +50,16 @@ class NotficationBox extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Posible derrumbe',
-                style: TextStyle(
+              Text(
+                nombre,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.red,
                   fontSize: 18.0,
                 ),
               ),
               Text(
-                fecha.toString(),
+                fecha,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 10,
@@ -84,14 +93,19 @@ class NotficationBox extends StatelessWidget {
                   fontSize: 12,
                 ),
               ),
-              const Text(
-                "Ver en el mapa",
-                style: TextStyle(
-                  color: ColorsTheme.pinkColor,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.underline,
-                  decorationThickness: 1.0,
+              GestureDetector(
+                onTap: () async {
+                  await Database.eliminarNotificacion(id);
+                },
+                child: const Text(
+                  "Eliminar notificacion",
+                  style: TextStyle(
+                    color: ColorsTheme.pinkColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                    decorationThickness: 1.0,
+                  ),
                 ),
               ),
             ],

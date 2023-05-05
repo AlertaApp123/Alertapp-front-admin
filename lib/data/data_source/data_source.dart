@@ -4,6 +4,11 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final CollectionReference _questionsCollection =
     _firestore.collection('preguntas');
 
+final CollectionReference _notificacionesCollection =
+    _firestore.collection('notificaciones');
+
+final CollectionReference _puntosCollection = _firestore.collection('puntos');
+
 class Database {
   static String? userUid;
 
@@ -20,5 +25,23 @@ class Database {
       'pregunta': pregunta,
       'respuesta': respuesta,
     });
+  }
+
+  static Future<QuerySnapshot> getNotificaciones() async {
+    CollectionReference notificacionesCollection = _notificacionesCollection;
+
+    QuerySnapshot querySnapshot = await notificacionesCollection.get();
+    return querySnapshot;
+  }
+
+  static Future<QuerySnapshot> getPuntos() async {
+    CollectionReference puntosCollection = _puntosCollection;
+
+    QuerySnapshot querySnapshot = await puntosCollection.get();
+    return querySnapshot;
+  }
+
+  static Future<void> eliminarNotificacion(String id) async {
+    await _notificacionesCollection.doc(id).delete();
   }
 }
