@@ -27,11 +27,9 @@ class Database {
     });
   }
 
-  static Future<QuerySnapshot> getNotificaciones() async {
+  static Stream<QuerySnapshot> getNotificaciones() {
     CollectionReference notificacionesCollection = _notificacionesCollection;
-
-    QuerySnapshot querySnapshot = await notificacionesCollection.get();
-    return querySnapshot;
+    return notificacionesCollection.snapshots();
   }
 
   static Future<QuerySnapshot> getPuntos() async {
