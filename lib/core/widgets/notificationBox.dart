@@ -95,8 +95,7 @@ class NotficationBox extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  await Database.eliminarNotificacion(id);
-                  Navigator.of(context).pop(true);
+                  await Database.delNotificacion(id);
                 },
                 child: const Text(
                   "Eliminar notificacion",

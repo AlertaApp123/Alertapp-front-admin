@@ -12,13 +12,6 @@ final CollectionReference _puntosCollection = _firestore.collection('puntos');
 class Database {
   static String? userUid;
 
-  static Future<QuerySnapshot> getQuestions() async {
-    CollectionReference infoQuestionsCollection = _questionsCollection;
-
-    QuerySnapshot querySnapshot = await infoQuestionsCollection.get();
-    return querySnapshot;
-  }
-
   static Future<void> addQuestion(
       {required String pregunta, required String respuesta}) async {
     await _questionsCollection.add({
@@ -27,19 +20,32 @@ class Database {
     });
   }
 
+  static Future<void> updatePeligro(String id, bool parametro) async {
+    await _puntosCollection.doc(id).update({'peligro': parametro});
+  }
+
+  static Future<void> delNotificacion(String id) async {
+    await _notificacionesCollection.doc(id).delete();
+  }
+
+  static Future<void> delQuestion(String id) async {
+    await _questionsCollection.doc(id).delete();
+  }
+
   static Stream<QuerySnapshot> getNotificaciones() {
     CollectionReference notificacionesCollection = _notificacionesCollection;
     return notificacionesCollection.snapshots();
   }
 
-  static Future<QuerySnapshot> getPuntos() async {
+  static Stream<QuerySnapshot> getPuntos() {
     CollectionReference puntosCollection = _puntosCollection;
 
-    QuerySnapshot querySnapshot = await puntosCollection.get();
-    return querySnapshot;
+    return puntosCollection.snapshots();
   }
 
-  static Future<void> eliminarNotificacion(String id) async {
-    await _notificacionesCollection.doc(id).delete();
+  static Stream<QuerySnapshot> getQuestions() {
+    CollectionReference infoQuestionsCollection = _questionsCollection;
+
+    return infoQuestionsCollection.snapshots();
   }
 }

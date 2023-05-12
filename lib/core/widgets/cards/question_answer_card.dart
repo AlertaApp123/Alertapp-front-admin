@@ -5,8 +5,12 @@ import '../../styles/color_theme.dart';
 class QuestionAnswerCard extends StatefulWidget {
   final String question;
   final String answer;
+  final String id;
   const QuestionAnswerCard(
-      {super.key, required this.answer, required this.question});
+      {super.key,
+      required this.answer,
+      required this.question,
+      required this.id});
 
   @override
   State<QuestionAnswerCard> createState() => _QuestionAnswerCardState();
