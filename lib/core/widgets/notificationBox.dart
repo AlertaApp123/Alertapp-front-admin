@@ -97,15 +97,10 @@ class NotficationBox extends StatelessWidget {
                 onTap: () async {
                   await Database.delNotificacion(id);
                 },
-                child: const Text(
-                  "Eliminar notificacion",
-                  style: TextStyle(
-                    color: ColorsTheme.pinkColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                    decorationThickness: 1.0,
-                  ),
+                child: Icon(
+                  Icons.delete,
+                  color: ColorsTheme.pinkColor,
+                  size: 20,
                 ),
               ),
             ],
